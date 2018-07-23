@@ -1,70 +1,51 @@
-Line dLine;
+float D = 50;
+float raline = 1;
 
 void setup() {
   size(displayWidth, displayHeight);
   
   blendMode(ADD);
-  colorMode(HSB, 360, 100, 100, 100);;
+  colorMode(HSB, 360, 100, 100, 100);
   
   background(0);
   
-  noLoop();
+  //noLoop();
   
-  dLine = new Line();
 }
 
 void draw() {
-  /*
-  float _frameCount = frameCount / 2;
   
-  float iy = _frameCount / width;
-  float dy = 100;
-  
-  dLine.x = _frameCount % width;
-  dLine.y = iy*dy + 50*sin(PI/100*frameCount) + 50;
-  dLine.angle = map(frameCount%1000, 0, PI, 0, 1000);
-  dLine.disp(frameCount);
-  */
+  background(0);
   
   
-  for (int i=0; i<100000; i++) {
+  for (int k=0; k<20000; k++) {
     
+    float i=k;
     
-    float _frameCount = i / 2;
-  
-    float iy = _frameCount / width;
-    float dy = 100;
+    float iy = i / width;
+    float dy = 2*D;
     
-    dLine.x = _frameCount % width;
-    dLine.y = int(iy)*dy + 50;//+ 50*sin(PI/100*i) ;
-    float da = map(i%width, 0, width, 0, PI/4);
-    dLine.angle = da;
-    //dLine.angle = map(i%1000, 0, 1000, 0, PI);// + random(-PI/10, PI/10);
-    //dLine.angle = map(i%1000, 0, PI, 0, 1000) + noise(i/20.0f);
-    //dLine.angle = map(i%1000, 0, i%100+10, 0, PI);
-    dLine.disp(i);
+    float x, y, angle;
+    x = i % width-D;
+    y = int(iy)*dy + D + D*sin(PI/100*i);
+    angle = map(i%width, 0, width, 0, PI*raline);
+    disp(x, y, angle, k%360, i/width);
   }
+  
+  raline += 10;
+  println(raline);
   
 }
 
-class Line {
-  float x, y;
-  float r=100;
   
-  float angle=radians(40);
-  
-  Line() {
-  }
-  
-  void disp(float i) {
-    stroke(i%360, 80, 30);
-    float x1, x2, y1, y2;
-    x1 = x + r/2 * cos(angle);
-    x2 = x + r/2 * cos(angle+PI);
-    y1 = y + r/2 * sin(angle);
-    y2 = y + r/2 * sin(angle+PI);
-    line(x1, y1, x2, y2);
-  }
+void disp(float x, float y, float angle, int hue, float radtio) {
+  stroke(hue, 80, 30);
+  float x1, x2, y1, y2;
+  x1 = x + D * cos(angle);
+  x2 = x + D * cos(angle+PI);
+  y1 = y + D * sin(angle);
+  y2 = y + D * sin(angle+PI);
+  line(x1, y1, x2, y2);
 }
 
 void keyPressed() {
