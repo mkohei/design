@@ -1,7 +1,8 @@
 float a, r;
 
 void setup() {
-  size(displayWidth, displayHeight);
+  //size(displayWidth, displayHeight);
+  size(2048, 1152);
   
   blendMode(ADD);
   colorMode(HSB, 360, 100, 100, 100);;
@@ -18,15 +19,17 @@ void draw() {
   //noStroke();
   stroke(200, 80, 10);
   fill(200, 80, 10);
+  strokeWeight(5);
   
-  float da = 2*PI/100;
-  float x, y;
-  for (int i=0; i<100; i++) {
-    x = r * cos(da * i) + width/2;
-    y = r * sin(da * i) + height/2;
-    point(x, y);
+  float x, y, t;
+  for (int i=0; i<width; i+=5) {
+    x = i;
+    t = map(i, 0, width, 0, 2*PI * 5/6);
+    y = height/2 + 150 * sin(t + r);
+    
+    point(x,y);
   }
-  r++;
+  r += 0.01;
 }
 
 void keyPressed() {
