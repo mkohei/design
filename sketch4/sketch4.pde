@@ -54,6 +54,8 @@ void draw() {
     snowballs[i].disp();
   }
   cnt = (cnt+interv)%(N-interv);
+  
+  saveFrame("frames/######.tif");
 }
 
 
