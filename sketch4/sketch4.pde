@@ -29,7 +29,7 @@ void draw() {
   background(0);
   
   translate(width/2, height/2);
-  //rotateX(radians(30));
+  rotateX(radians(30));
   
   rot+=0.005;
   rotateY(rot);
