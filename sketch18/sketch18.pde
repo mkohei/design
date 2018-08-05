@@ -18,7 +18,7 @@ void draw() {
   for(int j=0; j<720; j++) {
     stroke(random(360), 100, 100, 20);
     for (int i=0; i<width; i++) {
-      n = noise(j/(360/10.0f), i/(width/10.0f), (frameCount%1000)/(1000/1000.0f));
+      n = noise(j/(360/10.0f), i/(width/10.0f), (frameCount%1000)/(1000/100.0f));
       x = i * cos(radians(j + n*100));
       y = i * sin(radians(j + n*100));
       point(x,y);
