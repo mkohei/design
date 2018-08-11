@@ -26,7 +26,7 @@ void draw() {
   
   // move
   _r += 0.05;
-  _a += radians(0.5);
+  _a += radians(1.3);
   x = _r * cos(_a);
   y = _r * sin(_a);
   
